@@ -14,11 +14,11 @@ import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function CreatePost() {
-	const [file, setFile] = useState(null);
-	const [imageUploadProgress, setImageUploadProgress] = useState(null);
-	const [imageUploadError, setImageUploadError] = useState(null);
+	const [file, setFile] = useState('');
+	const [imageUploadProgress, setImageUploadProgress] = useState('');
+	const [imageUploadError, setImageUploadError] = useState('');
 	const [formData, setFormData] = useState({});
-	const [publishError, setPublishError] = useState(null);
+	const [publishError, setPublishError] = useState('');
 
 	const navigate = useNavigate();
 

@@ -20,14 +20,15 @@ export default function UpdatePost() {
 	const [imageUploadError, setImageUploadError] = useState(null);
 	const [formData, setFormData] = useState({});
 	const [publishError, setPublishError] = useState(null);
+	const [loading, setLoading] = useState(true);
 	const { postId } = useParams();
 
 	const navigate = useNavigate();
 	const { currentUser } = useSelector((state) => state.user);
 
 	useEffect(() => {
-		try {
-			const fetchPost = async () => {
+		const fetchPost = async () => {
+			try {
 				const res = await fetch(`/api/post/getposts?postId=${postId}`);
 				const data = await res.json();
 				if (!res.ok) {
@@ -38,14 +39,19 @@ export default function UpdatePost() {
 				if (res.ok) {
 					setPublishError(null);
 					setFormData(data.posts[0]);
+					setLoading(false);
 				}
-			};
+			} catch (error) {
+				console.log(error.message);
+			}
+		};
 
-			fetchPost();
-		} catch (error) {
-			console.log(error.message);
-		}
+		fetchPost();
 	}, [postId]);
+
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 
 	const handleUpdloadImage = async () => {
 		try {

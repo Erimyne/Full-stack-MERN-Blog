@@ -18,8 +18,7 @@ export default function Home() {
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
         <h1 className='text-3xl font-bold lg:text-6xl'>Welcome to my Blog</h1>
         <p className='text-gray-500 text-sm'>
-          Here you'll find a variety of articles and tutorials on topics such as
-          web development, software engineering, and programming languages.
+        Erimyne's Blo is a blog I created to to share latests news and updates on sports all around the world. The blog primarily focuses on football especially the top five leagues in the world. This blog will also keep you updated on the latests transfer rumours in football. I hope you enjoy reading my blog
         </p>
         <Link
           to='/search'

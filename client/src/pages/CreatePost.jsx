@@ -20,6 +20,40 @@ export default function CreatePost() {
 	const [formData, setFormData] = useState({});
 	const [publishError, setPublishError] = useState('');
 
+	// React quill setting
+	const modules = {
+		toolbar: [
+			[{ header: [1, 2, 3, 4, 5, 6, false] }],
+			[{ color: ['black', 'red', 'blue', 'green', 'crimson'] }],
+			[{ font: [] }],
+			['bold', 'italic', 'underline', 'strike', 'blockquote'],
+			[
+				{ list: 'ordered' },
+				{ list: 'bullet' },
+				{ indent: '-1' },
+				{ indent: '+1' },
+			],
+			['link', 'image', 'video'],
+			['clean'],
+		],
+	};
+
+	const formats = [
+		'header',
+		'color',
+		'font',
+		'bold',
+		'italic',
+		'underline',
+		'strike',
+		'blockquote',
+		'list',
+		'bullet',
+		'indent',
+		'link',
+		'image',
+	];
+
 	const navigate = useNavigate();
 
 	const handleUpdloadImage = async () => {
@@ -143,6 +177,8 @@ export default function CreatePost() {
 					/>
 				)}
 				<ReactQuill
+					modules={modules}
+					formats={formats}
 					theme="snow"
 					placeholder="Write something..."
 					className="h-72 mb-12"

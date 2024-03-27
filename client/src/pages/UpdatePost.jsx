@@ -23,6 +23,40 @@ export default function UpdatePost() {
 	const [loading, setLoading] = useState(true);
 	const { postId } = useParams();
 
+	// React quill setting
+	const modules = {
+		toolbar: [
+			[{ header: [1, 2, 3, 4, 5, 6, false] }],
+			[{ color: ['black', 'red', 'blue', 'green', 'crimson'] }],
+			[{ font: [] }],
+			['bold', 'italic', 'underline', 'strike', 'blockquote'],
+			[
+				{ list: 'ordered' },
+				{ list: 'bullet' },
+				{ indent: '-1' },
+				{ indent: '+1' },
+			],
+			['link', 'image', 'video'],
+			['clean'],
+		],
+	};
+
+	const formats = [
+		'header',
+		'color',
+		'font',
+		'bold',
+		'italic',
+		'underline',
+		'strike',
+		'blockquote',
+		'list',
+		'bullet',
+		'indent',
+		'link',
+		'image',
+	];
+
 	const navigate = useNavigate();
 	const { currentUser } = useSelector((state) => state.user);
 
@@ -179,6 +213,8 @@ export default function UpdatePost() {
 					/>
 				)}
 				<ReactQuill
+					modules={modules}
+					formats={formats}
 					theme="snow"
 					value={formData.content}
 					placeholder="Write something..."

@@ -19,6 +19,7 @@ export default function CreatePost() {
 	const [imageUploadError, setImageUploadError] = useState('');
 	const [formData, setFormData] = useState({});
 	const [publishError, setPublishError] = useState('');
+	
 
 	// React quill setting
 	const modules = {

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import PostCard from '../components/PostCard';
-import ClipLoader from 'react-spinners/ClipLoader';
 import myImage from '../images/_72c0ec90-9e06-4cc1-9583-c3a3a9603314.jpg';
+import { Spinner } from 'flowbite-react';
 
 export default function Home() {
 	const [posts, setPosts] = useState([]);
@@ -43,8 +43,8 @@ export default function Home() {
 
 			<div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7">
 				{loading ? (
-					<div className="flex justify-center items-start h-screen">
-						<ClipLoader color="#000000" loading={loading} size={150} />
+					<div className="flex justify-center items-center min-h-screen">
+						<Spinner size="xl" />
 						Loading posts...
 					</div>
 				) : (

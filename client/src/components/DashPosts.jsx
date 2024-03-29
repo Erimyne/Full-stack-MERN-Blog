@@ -1,11 +1,11 @@
+import { Modal, Table, Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Modal, Table } from 'flowbite-react';
 import { Link } from 'react-router-dom';
-import { deletepost } from '../../../api/controllers/post.controller';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { set } from 'mongoose';
 
-function DashPosts() {
+export default function DashPosts() {
 	const { currentUser } = useSelector((state) => state.user);
 	const [userPosts, setUserPosts] = useState([]);
 	const [showMore, setShowMore] = useState(true);
@@ -48,6 +48,7 @@ function DashPosts() {
 			console.log(error.message);
 		}
 	};
+
 	const handleDeletePost = async () => {
 		setShowModal(false);
 		try {
@@ -69,15 +70,16 @@ function DashPosts() {
 			console.log(error.message);
 		}
 	};
+
 	return (
 		<div className="table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500">
 			{currentUser.isAdmin && userPosts.length > 0 ? (
 				<>
 					<Table hoverable className="shadow-md">
 						<Table.Head>
-							<Table.HeadCell>Date Updated</Table.HeadCell>
-							<Table.HeadCell>Post Image</Table.HeadCell>
-							<Table.HeadCell>Post Title</Table.HeadCell>
+							<Table.HeadCell>Date updated</Table.HeadCell>
+							<Table.HeadCell>Post image</Table.HeadCell>
+							<Table.HeadCell>Post title</Table.HeadCell>
 							<Table.HeadCell>Category</Table.HeadCell>
 							<Table.HeadCell>Delete</Table.HeadCell>
 							<Table.HeadCell>
@@ -101,7 +103,7 @@ function DashPosts() {
 									</Table.Cell>
 									<Table.Cell>
 										<Link
-											className="font-md text-gray-900 dark:text-white"
+											className="font-medium text-gray-900 dark:text-white"
 											to={`/post/${post.slug}`}
 										>
 											{post.title}
@@ -114,14 +116,14 @@ function DashPosts() {
 												setShowModal(true);
 												setPostIdToDelete(post._id);
 											}}
-											className="font-md text-red-500 hover:underline cursor-pointer"
+											className="font-medium text-red-500 hover:underline cursor-pointer"
 										>
 											Delete
 										</span>
 									</Table.Cell>
 									<Table.Cell>
 										<Link
-											className="text-teal-500"
+											className="text-teal-500 hover:underline"
 											to={`/update-post/${post._id}`}
 										>
 											<span>Edit</span>
@@ -136,7 +138,7 @@ function DashPosts() {
 							onClick={handleShowMore}
 							className="w-full text-teal-500 self-center text-sm py-7"
 						>
-							Show More
+							Show more
 						</button>
 					)}
 				</>
@@ -170,5 +172,3 @@ function DashPosts() {
 		</div>
 	);
 }
-
-export default DashPosts;

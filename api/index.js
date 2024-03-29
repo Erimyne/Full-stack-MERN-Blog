@@ -25,8 +25,8 @@ const __dirname = path.resolve();
 const app = express();
 
 // increase file upload limit
-app.use(express.json({ limit: '500mb' }));
-app.use(express.urlencoded({ limit: '500mb', extended: true }));
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
 app.use(express.json());
 app.use(cookieParser());

@@ -20,8 +20,8 @@ export default function Home() {
 
 	return (
 		<div>
-			<div className="flex flex-col gap-6 p-20 max-w-6xl mx-auto mt-10 bg-gray-100 rounded-lg shadow-lg">
-				<div className="">
+			<div className="flex flex-col justify-center items-center gap-6 p-20 max-w-6xl mx-auto mt-10 bg-gray-100 rounded-lg shadow-lg">
+				<div className="text-center text-md sm:text-left">
 					<h1 className="text-4xl font-bold text-gray-700 lg:text-6xl py-3">
 						Welcome to my Blog
 					</h1>
@@ -44,18 +44,13 @@ export default function Home() {
 			<div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7">
 				{loading ? (
 					<div className="flex justify-center items-start h-screen">
-						<ClipLoader
-							color="#000000"
-							loading={loading}
-							size={150}
-							className="pt-2"
-						/>
+						<ClipLoader color="#000000" loading={loading} size={150} />
 						Loading posts...
 					</div>
 				) : (
 					posts &&
 					posts.length > 0 && (
-						<div className="flex flex-col gap-4">
+						<div className="flex flex-col gap-4 shadow-lg rounded-md pt-1">
 							<h2 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">
 								Recent Posts
 							</h2>

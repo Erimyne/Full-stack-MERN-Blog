@@ -8,20 +8,20 @@ import { toggleTheme } from '../redux/theme/themeSlice';
 import { signoutSuccess } from '../redux/user/userSlice';
 function Header() {
 	const path = useLocation().pathname;
-	const location = useLocation()
-	const navigate = useNavigate()
+	const location = useLocation();
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { currentUser } = useSelector((state) => state.user);
 	const { theme } = useSelector((state) => state.theme);
-	const [searchTerm, setSearchTerm] = useState('')
+	const [searchTerm, setSearchTerm] = useState('');
 
 	useEffect(() => {
-		const urlParams = new URLSearchParams(location.search)
-		const searchTermFromUrl = urlParams.get('searchTerm')
-		if(searchTermFromUrl){
-			setSearchTerm(searchTermFromUrl)
+		const urlParams = new URLSearchParams(location.search);
+		const searchTermFromUrl = urlParams.get('searchTerm');
+		if (searchTermFromUrl) {
+			setSearchTerm(searchTermFromUrl);
 		}
-	}, [location.search])
+	}, [location.search]);
 
 	const handleSignout = async () => {
 		try {
@@ -32,27 +32,27 @@ function Header() {
 			if (!res.ok) {
 				console.log(data.message);
 			} else {
-				dispatch(signoutSuccess())
+				dispatch(signoutSuccess());
 			}
 		} catch (error) {
 			console.log(error.message);
 		}
 	};
 
-	const handleSubmit =(e) => {
-		e.preventDefault()
-		const urlParams = new URLSearchParams(location.search)
-		urlParams.set('searchTerm', searchTerm)
-		const searchQuery = urlParams.toString()
-		navigate(`/search?${searchQuery}`)
-	}
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const urlParams = new URLSearchParams(location.search);
+		urlParams.set('searchTerm', searchTerm);
+		const searchQuery = urlParams.toString();
+		navigate(`/search?${searchQuery}`);
+	};
 	return (
 		<Navbar className="border-b-2">
 			<Link
 				to="/"
 				className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
 			>
-				<span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
+				<span className="px-2 py-1 bg-gradient-to-r from-orange-500 via-bluel-500 to-red-500 rounded-lg text-white">
 					Erimyne
 				</span>
 				Sports

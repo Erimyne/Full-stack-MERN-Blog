@@ -20,7 +20,7 @@ export default function Home() {
 
 	return (
 		<div>
-			<div className="flex flex-col justify-center items-center gap-6 p-20 max-w-6xl mx-auto mt-10 bg-gray-100 rounded-lg shadow-lg">
+			<div className="flex flex-col justify-center items-center gap-6 p-20 max-w-6xl mx-auto mt-10 rounded-lg shadow-lg hero">
 				<div className="text-center text-md sm:text-left">
 					<h1 className="text-4xl font-bold text-gray-700 lg:text-6xl py-3">
 						Welcome to my Blog
